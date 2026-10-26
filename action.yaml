@@ -49,6 +49,10 @@ inputs:
     description: 'Timestamp or duration for delayed delivery.'
     required: false
     default: ''
+  timezone:
+    description: 'IANA timezone for natural language delayed delivery times (e.g. Asia/Tokyo).'
+    required: false
+    default: ''
   email:
     description: 'E-mail address for e-mail notifications.'
     required: false

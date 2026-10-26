@@ -83,6 +83,7 @@ export async function send(inputs: SendInputs) {
     filename,
     icon,
     delay,
+    timezone,
     email,
     call,
     sequenceId,
@@ -151,6 +152,10 @@ export async function send(inputs: SendInputs) {
 
   if (delay) {
     headers['X-Delay'] = encodeRfc2047(delay);
+  }
+
+  if (timezone) {
+    headers['X-Timezone'] = timezone;
   }
 
   if (sequenceId) {

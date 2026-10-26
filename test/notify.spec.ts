@@ -365,6 +365,24 @@ describe('notify', function () {
       expect(res).to.have.deep.property('message', 'This is a test message with delay.');
     });
 
+    it('send a message with timezone', async function () {
+      const res = await send({
+        apiUrl,
+        accessToken,
+        basicAuth,
+        message: 'This is a test message with timezone.',
+        delay: 'tomorrow, 10am',
+        timezone: 'Asia/Tokyo',
+      });
+      expect(res).to.have.own.property('id');
+      expect(res).to.have.own.property('time');
+      expect(res).to.have.own.property('expires');
+      expect(res).to.have.own.property('topic');
+      expect(res).to.have.deep.property('event', 'message');
+      expect(res).to.have.deep.property('message', 'This is a test message with timezone.');
+      expect(res.time).to.be.greaterThan(Math.floor(Date.now() / 1000));
+    });
+
     it('send a message with email', async function () {
       if (!email) {
         console.log('Skipping: SELF_HOSTED_EMAIL environment variable is not set.');
@@ -832,6 +850,24 @@ describe('notify', function () {
       expect(res).to.have.own.property('topic');
       expect(res).to.have.deep.property('event', 'message');
       expect(res).to.have.deep.property('message', 'This is a test message with delay.');
+    });
+
+    it('send a message with timezone', async function () {
+      const res = await send({
+        apiUrl,
+        accessToken,
+        basicAuth,
+        message: 'This is a test message with timezone.',
+        delay: 'tomorrow, 10am',
+        timezone: 'Asia/Tokyo',
+      });
+      expect(res).to.have.own.property('id');
+      expect(res).to.have.own.property('time');
+      expect(res).to.have.own.property('expires');
+      expect(res).to.have.own.property('topic');
+      expect(res).to.have.deep.property('event', 'message');
+      expect(res).to.have.deep.property('message', 'This is a test message with timezone.');
+      expect(res.time).to.be.greaterThan(Math.floor(Date.now() / 1000));
     });
 
     it('send a message with email', async function () {

@@ -69,6 +69,7 @@ jobs:
 | `filename` | string | `""` | `"flower.jpg"` | File name of the attachment. *To send a smaller (usually less than 4,096 bytes) text-only file as attachment, you must pass a `filename`.* | *Android, Web* |
 | `icon` | string | `""` | `"https://example.com/icon.png"` | URL to use as notification icon. **Only JPEG and PNG images are supported at this time.** | *Android* |
 | `delay` | integer or string | `""` | `1639194738`, `"30m"` or `"tomorrow, 3pm"` | A Unix timestamp, a duration or a [natural language time string](https://github.com/olebedev/when) for delayed delivery. *The minimum delay you can set is 10 seconds and the maximum delay is 3 days.* | *Android, iOS, Web* |
+| `timezone` | string | `""` | `"Asia/Tokyo"` | IANA timezone name used to interpret natural language values of `delay` (e.g. `"tomorrow, 3pm"`). Relative durations and Unix timestamps are unaffected. Defaults to the server's local timezone. *Requires ntfy v2.29.0 or later.* | |
 | `email` | string | `""` | `"ntfy@example.com"` | Forward messages to e-mail. *For self-hosted services, you need configure an SMTP server for outgoing messages.* | *Android, iOS, Web* |
 | `call` | string | `""` | `"+12223334444"` or `"yes"` | Phone number to use for voice call. On ntfy.sh, this feature is only supported to [ntfy Pro](https://ntfy.sh/app) plans. | *Android, iOS, Web* |
 | `sequence-id` | string | `""` | `"the_sequence_id"` | Sequence ID for updating/deleting notifications. | *Android, Web* |
